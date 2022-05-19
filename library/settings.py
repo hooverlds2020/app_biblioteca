@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'book',
     'user',
     'place',
+    'author',
     'rest_framework',
 ]
 

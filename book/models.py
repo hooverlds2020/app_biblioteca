@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import User
+from author.models import Author
 # Create your models here.
 class Book(models.Model):
 
@@ -13,7 +13,7 @@ class Book(models.Model):
     ]
     title= models.CharField(max_length=200, blank=False, null=False, default="")
     subject = models.CharField(max_length=200, blank=False, null=False, default="")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     book = models.CharField(choices=BOOKS_CHOICES, max_length=200, default="")
     isbn= models.CharField(max_length=10, primary_key=True, default="")
     publisher = models.CharField(max_length=200, blank=False, null=False, default="")
@@ -21,4 +21,4 @@ class Book(models.Model):
     format = models.CharField(choices=FORMAT_CHOICES, max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.isbn} | {self.title} | {self.author.email}" 
+        return f"{self.isbn} | {self.title} | {self.author.name}"
